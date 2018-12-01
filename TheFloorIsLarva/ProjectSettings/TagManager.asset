@@ -14,7 +14,7 @@ TagManager:
   - 
   - 
   - Maggots
-  - 
+  - Walls
   - 
   - 
   - 
@@ -38,6 +38,18 @@ TagManager:
   - 
   - 
   m_SortingLayers:
+  - name: Ground
+    uniqueID: 1927105703
+    locked: 0
+  - name: Player
+    uniqueID: 2597381759
+    locked: 0
+  - name: Walls
+    uniqueID: 3242611269
+    locked: 0
+  - name: Overlay
+    uniqueID: 375726953
+    locked: 0
   - name: Default
     uniqueID: 0
     locked: 0
