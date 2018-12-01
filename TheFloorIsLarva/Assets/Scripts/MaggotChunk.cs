@@ -3,18 +3,18 @@ using System.Collections.Generic;
 using UnityEngine;
 
 
-public class MaggotMass : MonoBehaviour
+public class MaggotChunk : MonoBehaviour
 {
 	// Physics
 	Rigidbody2D _rb;
 
 	// Size n' shit
-	public int _maxAmount = 8;
-	public int _amount = 8;
+	public int _maxAmount = 4;
+	public int _amount = 4;
 
 	// Splitting
-	public MaggotMass _maggotMassPrefab;
-	public int _splitCost = 2;
+	public MaggotChunk _maggotMassPrefab;
+	public int _splitCost = 1;
 
 	private void Awake()
 	{
@@ -27,16 +27,32 @@ public class MaggotMass : MonoBehaviour
 		_amount = (int)Mathf.Clamp(_amount, 0.0f, _maxAmount);
 		float f = _amount / (float)_maxAmount;
 		transform.localScale = new Vector3(f, f, f);
+
+		// Die
+		if(_amount <= 0)
+		{
+			Die();
+		}
+	}
+
+	void Die()
+	{
+		Destroy(gameObject);
 	}
 
 	public void Split()
 	{
-		if(_amount >= _splitCost)
+		if(_amount > _splitCost)
 		{
-			MaggotMass mm = Instantiate(_maggotMassPrefab);
+			MaggotChunk mm = Instantiate(_maggotMassPrefab);
 			mm.transform.position = transform.position;
 			mm._amount = 2;
 			_amount -= 2;
 		}
+	}
+
+	public void Drag(Vector2 drag)
+	{
+		transform.position += (Vector3)drag.normalized * Time.deltaTime;
 	}
 }
