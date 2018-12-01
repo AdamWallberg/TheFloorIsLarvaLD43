@@ -21,7 +21,7 @@ GameObject:
   - component: {fileID: 4902499850113790}
   - component: {fileID: 33613129569920210}
   - component: {fileID: 23820213931797352}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: Sphere
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -39,7 +39,7 @@ GameObject:
   - component: {fileID: 58249713625063354}
   - component: {fileID: 50980116304987982}
   - component: {fileID: 114423935819752598}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: MaggotMass
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -127,7 +127,7 @@ Rigidbody2D:
   m_UseFullKinematicContacts: 0
   m_UseAutoMass: 0
   m_Mass: 1
-  m_LinearDrag: 0
+  m_LinearDrag: 1
   m_AngularDrag: 0.05
   m_GravityScale: 0
   m_Material: {fileID: 0}
@@ -161,7 +161,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: b2287effa4a47e846a17c6b10ed47077, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  _rb: {fileID: 0}
   _maxAmount: 8
   _amount: 8
   _maggotMassPrefab: {fileID: 114423935819752598}
   _splitCost: 2
+  _timeAtSplit: 0
+  _pushTimeThreshold: 10000

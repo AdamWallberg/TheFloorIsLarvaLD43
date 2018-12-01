@@ -83,7 +83,7 @@ public class InputManager : MonoBehaviour
 				}
 				else if(_mouseHeld) // Dragging
 				{
-					Vector2 diff = pos - (Vector2)_lastSelectedChunk.transform.position;
+					Vector2 diff = pos - _lastClickPos;
 					float distSquared = diff.sqrMagnitude;
 					if(distSquared > _dragThreshold * _dragThreshold)
 					{
