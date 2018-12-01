@@ -15,7 +15,7 @@ TagManager:
   - 
   - Maggots
   - Walls
-  - 
+  - Activators
   - 
   - 
   - 
@@ -40,6 +40,9 @@ TagManager:
   m_SortingLayers:
   - name: Ground
     uniqueID: 1927105703
+    locked: 0
+  - name: FloorObjects
+    uniqueID: 1834475123
     locked: 0
   - name: Player
     uniqueID: 2597381759
