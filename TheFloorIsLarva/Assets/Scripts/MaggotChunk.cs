@@ -24,6 +24,9 @@ public class MaggotChunk : MonoBehaviour
 	// Merging
 	public bool _merging = false;
 
+	// Visuals
+	public SpriteRenderer _renderer;
+
 	private void Awake()
 	{
 		_rb = GetComponent<Rigidbody2D>();
@@ -49,6 +52,9 @@ public class MaggotChunk : MonoBehaviour
 
 		// Interact with other chunks
 		Interact();
+
+		// Rotate sprite
+		HandleSpriteRotation();
 	}
 
 	void MovementSizeReduction()
@@ -138,5 +144,12 @@ public class MaggotChunk : MonoBehaviour
 		other._merging = false;
 		Destroy(gameObject);
 		enabled = false;
+	}
+
+	void HandleSpriteRotation()
+	{
+		Vector3 direction = _rb.velocity.normalized;
+		Transform t = _renderer.transform;
+		t.up = direction;
 	}
 }
