@@ -32,6 +32,7 @@ public class MaggotChunk : MonoBehaviour
 	// Visuals
 	public SpriteRenderer _renderer;
 	public ParticleSystem _maggotSplatter;
+	public ParticleSystem[] _particleSystems;
 
 	private void Awake()
 	{
@@ -115,6 +116,12 @@ public class MaggotChunk : MonoBehaviour
 
 	void Die()
 	{
+		foreach(var ps in _particleSystems)
+		{
+			ps.transform.parent = null;
+			Destroy(ps.gameObject, 60.0f);
+		}
+
 		Destroy(gameObject);
 	}
 
