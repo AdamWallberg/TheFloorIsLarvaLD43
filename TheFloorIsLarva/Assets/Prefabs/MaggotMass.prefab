@@ -85,7 +85,7 @@ Transform:
   m_GameObject: {fileID: 1779329356524940}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
-  m_LocalScale: {x: 1.62571, y: 1.62571, z: 1.62571}
+  m_LocalScale: {x: 2.9279037, y: 2.9279037, z: 2.9279037}
   m_Children: []
   m_Father: {fileID: 4060002618668384}
   m_RootOrder: 1
@@ -157,7 +157,7 @@ Rigidbody2D:
   m_UseFullKinematicContacts: 0
   m_UseAutoMass: 0
   m_Mass: 1
-  m_LinearDrag: 1
+  m_LinearDrag: 5
   m_AngularDrag: 0.05
   m_GravityScale: 0
   m_Material: {fileID: 0}
@@ -179,7 +179,7 @@ CircleCollider2D:
   m_UsedByComposite: 0
   m_Offset: {x: 0, y: 0}
   serializedVersion: 2
-  m_Radius: 0.62069917
+  m_Radius: 1.1090813
 --- !u!114 &114423935819752598
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -196,6 +196,8 @@ MonoBehaviour:
   _maxAmount: 8
   _amount: 8
   _movementSizeReductionRate: 0.1
+  _maxMoveForce: 500
+  _maxDragRange: 2
   _maggotMassPrefab: {fileID: 114423935819752598}
   _splitCost: 2
   _timeAtSplit: 0

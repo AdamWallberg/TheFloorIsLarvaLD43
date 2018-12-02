@@ -13,7 +13,11 @@ public class MaggotChunk : MonoBehaviour
 	public float _maxAmount = 4.0f;
 	public float _amount = 4.0f;
 	Vector3 _lastFramePos;
+
+	// Movement
 	public float _movementSizeReductionRate = 1.0f;
+	public float _maxMoveForce = 500.0f;
+	public float _maxDragRange = 2.0f;
 
 	// Splitting
 	public MaggotChunk _maggotMassPrefab;
@@ -124,7 +128,10 @@ public class MaggotChunk : MonoBehaviour
 
 	public void Drag(Vector2 drag)
 	{
-		_rb.AddForce(drag * Time.deltaTime * 100.0f);
+		float d = Mathf.Clamp(drag.magnitude, 0.0f, _maxDragRange);
+		float f = d / _maxDragRange;
+
+		_rb.AddForce(drag.normalized * f * Time.deltaTime * _maxMoveForce);
 	}
 
 	public IEnumerator Merge(MaggotChunk other)

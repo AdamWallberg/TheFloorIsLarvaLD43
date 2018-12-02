@@ -77,7 +77,6 @@ public class InputManager : MonoBehaviour
 							_currentInput = InputType.NONE;
 							_lastSelectedChunk.Split();
 							_lastSelectedChunk = null;
-							print("Doubleclicked the thing");
 						}
 					}
 				}
