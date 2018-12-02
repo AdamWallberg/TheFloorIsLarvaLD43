@@ -1760,8 +1760,31 @@ MonoBehaviour:
   _minDist: 0.5
   _maxDist: 1
   _randomizeScale: 0.3
+  _scaleMultiplier: 1
+  _randomizePosition: 0
   _despawnTime: 4
   _despawnRate: 15
+--- !u!114 &1685239287
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 1685239281}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 05a5346ac4f7ece43b0c9583881fdb8c, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _splatters:
+  - {fileID: 212027865548454898, guid: f1bafe9b067ae2e4c8ed6ba13c9d3665, type: 2}
+  - {fileID: 212536814527953272, guid: c6a7f8ccc313a8e44b456bb5bd6ed4db, type: 2}
+  _minDist: 0.2
+  _maxDist: 0.5
+  _randomizeScale: 0.2
+  _scaleMultiplier: 0.5
+  _randomizePosition: 1
+  _despawnTime: 5
+  _despawnRate: 5
 --- !u!1 &1703554294
 GameObject:
   m_ObjectHideFlags: 0

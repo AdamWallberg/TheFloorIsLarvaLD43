@@ -9,6 +9,8 @@ public class SplatterSpawner : MonoBehaviour
 	public float _minDist = 0.3f;
 	public float _maxDist = 1.0f;
 	public float _randomizeScale = 0.5f;
+	public float _scaleMultiplier = 1.0f;
+	public float _randomizePosition = 0.0f;
 	float _distance;
 	float _distanceTraveled;
 	float _movementDelta;
@@ -32,11 +34,16 @@ public class SplatterSpawner : MonoBehaviour
 		if(_distanceTraveled > _distance)
 		{
 			var r = Instantiate(_splatters[Random.Range(0, _splatters.Length)]);
-			r.transform.position = transform.position;
+			r.transform.position = transform.position + 
+				new Vector3(
+					Random.Range(-_randomizePosition, _randomizePosition),
+					Random.Range(-_randomizePosition, _randomizePosition), 
+					0.0f) * transform.localScale.x;
 			r.transform.Rotate(Vector3.forward, Random.Range(0.0f, 360.0f));
 			r.transform.localScale = 
 				transform.localScale * 
-				Random.Range(1.0f - _randomizeScale, 1.0f + _randomizeScale);
+				Random.Range(1.0f - _randomizeScale, 1.0f + _randomizeScale) *
+				_scaleMultiplier;
 			StartCoroutine(Fade(r));
 			_distanceTraveled = 0.0f;
 			RecalculateDistance();

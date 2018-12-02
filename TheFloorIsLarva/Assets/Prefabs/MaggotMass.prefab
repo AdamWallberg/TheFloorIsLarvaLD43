@@ -55,6 +55,8 @@ GameObject:
   - component: {fileID: 58249713625063354}
   - component: {fileID: 50980116304987982}
   - component: {fileID: 114423935819752598}
+  - component: {fileID: 114266420800370592}
+  - component: {fileID: 114395004457393420}
   m_Layer: 8
   m_Name: MaggotMass
   m_TagString: Untagged
@@ -180,6 +182,49 @@ CircleCollider2D:
   m_Offset: {x: 0, y: 0}
   serializedVersion: 2
   m_Radius: 1.1090813
+--- !u!114 &114266420800370592
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1863128305996086}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 05a5346ac4f7ece43b0c9583881fdb8c, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _splatters:
+  - {fileID: 212385148046357862, guid: 072b241001cd0784fa311386182b0bfd, type: 2}
+  - {fileID: 212182550538990940, guid: 1e4c9b04c9db9a345ae07c47a88302ae, type: 2}
+  - {fileID: 212833531688787402, guid: c3df0ac996939774994c06acece1b226, type: 2}
+  _minDist: 0.5
+  _maxDist: 1
+  _randomizeScale: 0.3
+  _scaleMultiplier: 1
+  _randomizePosition: 0
+  _despawnTime: 4
+  _despawnRate: 15
+--- !u!114 &114395004457393420
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1863128305996086}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 05a5346ac4f7ece43b0c9583881fdb8c, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _splatters:
+  - {fileID: 212027865548454898, guid: f1bafe9b067ae2e4c8ed6ba13c9d3665, type: 2}
+  - {fileID: 212536814527953272, guid: c6a7f8ccc313a8e44b456bb5bd6ed4db, type: 2}
+  _minDist: 0.2
+  _maxDist: 0.5
+  _randomizeScale: 0.2
+  _scaleMultiplier: 0.5
+  _randomizePosition: 1
+  _despawnTime: 5
+  _despawnRate: 5
 --- !u!114 &114423935819752598
 MonoBehaviour:
   m_ObjectHideFlags: 1
