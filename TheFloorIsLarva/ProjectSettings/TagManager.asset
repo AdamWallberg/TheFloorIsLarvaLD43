@@ -41,6 +41,9 @@ TagManager:
   - name: Ground
     uniqueID: 1927105703
     locked: 0
+  - name: GroundSplatter
+    uniqueID: 1010283923
+    locked: 0
   - name: FloorObjects
     uniqueID: 1834475123
     locked: 0
