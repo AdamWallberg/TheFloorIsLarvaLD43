@@ -66,6 +66,10 @@ public class MaggotChunk : MonoBehaviour
 		if(!_merging)
 		{
 			Vector3 posDelta = transform.position - _lastFramePos;
+			if (posDelta.magnitude > 1.0f)
+			{
+				posDelta = Vector3.zero;
+			}
 			_amount -= posDelta.magnitude * _movementSizeReductionRate;
 			_lastFramePos = transform.position;
 		}
