@@ -30,6 +30,7 @@ public class MaggotChunk : MonoBehaviour
 
 	// Visuals
 	public SpriteRenderer _renderer;
+	public ParticleSystem _maggotSplatter;
 
 	private void Awake()
 	{
@@ -162,5 +163,18 @@ public class MaggotChunk : MonoBehaviour
 		Vector3 direction = _rb.velocity.normalized;
 		Transform t = _renderer.transform;
 		t.up = direction;
+	}
+
+	private void OnCollisionEnter2D(Collision2D collision)
+	{
+		foreach(var c in collision.contacts)
+		{
+			float force = c.relativeVelocity.magnitude;
+			if(force > 1.0f)
+			{
+				_maggotSplatter.Play();
+				break;
+			}
+		}
 	}
 }
