@@ -128,6 +128,7 @@ public class MaggotChunk : MonoBehaviour
 			_amount -= _splitCost;
 			_rb.AddForce(Vector2.up * 0.1f, ForceMode2D.Impulse);
 			mm._rb.AddForce(Vector2.down * 0.1f, ForceMode2D.Impulse);
+			_maggotSplatter.Play();
 		}
 	}
 

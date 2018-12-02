@@ -1,6 +1,7 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.UI;
 
 public class InputManager : MonoBehaviour
 {
@@ -18,12 +19,59 @@ public class InputManager : MonoBehaviour
 
 	public float _doubleClickThreshold = 0.5f;
 	public float _dragThreshold = 1.0f;
-	
+
+	public Image _cursor;
+	public Sprite[] _cursorStates;
+
+	void Start()
+	{
+		Cursor.visible = false;
+	}
+
 	void Update ()
 	{
 		HandleMaggotChunks();
+		HandleCursor();
 	}
-	
+
+	void HandleCursor()
+	{
+		// Move cursor
+		_cursor.transform.position = Input.mousePosition;
+
+		// Handle clicking
+		if (Input.GetMouseButton(0))
+		{
+			_cursor.sprite = _cursorStates[1];
+			float scale = 1.0f;
+			_cursor.transform.localScale = new Vector3(scale, scale, scale);
+		}
+		else
+		{
+			_cursor.sprite = _cursorStates[0];
+			float scale = 1.0f;
+			_cursor.transform.localScale = new Vector3(scale, scale, scale);
+		}
+
+		// Handle mouse over
+		bool mouseOver = _currentInput != InputType.NONE;
+		foreach (var chunk in FindObjectsOfType<MaggotChunk>())
+		{
+			if(CheckMouseOver(chunk))
+			{
+				mouseOver = true;
+				break;
+			}
+		}
+
+		Color c = _cursor.color;
+		//c.a = mouseOver ? 1.0f : 0.3f;
+		c.r = mouseOver ? 1.0f : 0.5f;
+		c.g = mouseOver ? 1.0f : 0.5f;
+		c.b = mouseOver ? 1.0f : 0.5f;
+		_cursor.color = c;
+	}
+
 	void HandleMaggotChunks()
 	{
 		bool mouseClicked = Input.GetMouseButtonDown(0);
