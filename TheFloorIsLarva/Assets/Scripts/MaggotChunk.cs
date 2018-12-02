@@ -24,6 +24,7 @@ public class MaggotChunk : MonoBehaviour
 	public int _splitCost = 1;
 	[HideInInspector]public float _timeAtSplit;
 	public float _pushTimeThreshold = 1.0f;
+	public float _minimumSize = 1.0f;
 
 	// Merging
 	public bool _merging = false;
@@ -102,7 +103,7 @@ public class MaggotChunk : MonoBehaviour
 					{
 						other._merging = true;
 						_merging = true;
-						if(other._amount < _amount)
+						if(other._amount > _amount)
 							other.StartCoroutine(other.Merge(this));
 						else
 							StartCoroutine(Merge(other));
@@ -119,13 +120,14 @@ public class MaggotChunk : MonoBehaviour
 
 	public void Split()
 	{
-		if(_amount > _splitCost + 1.0f)
+		float splitCost = _amount * 0.5f;
+		if(_amount > splitCost + 1.0f)
 		{
 			MaggotChunk mm = Instantiate(_maggotMassPrefab);
 			mm.transform.position = transform.position;
-			mm._amount = _splitCost;
+			mm._amount = splitCost;
 			mm._timeAtSplit = _timeAtSplit = Time.time;
-			_amount -= _splitCost;
+			_amount -= splitCost;
 			_rb.AddForce(Vector2.up * 0.1f, ForceMode2D.Impulse);
 			mm._rb.AddForce(Vector2.down * 0.1f, ForceMode2D.Impulse);
 			_maggotSplatter.Play();
@@ -147,16 +149,26 @@ public class MaggotChunk : MonoBehaviour
 		float newTotal = other._amount + _amount;
 		const float growRate = 2.0f;
 
-		while(other._amount < newTotal)
+		float _splashFrequency = 0.2f;
+		float _splashTimer = 0.0f;
+
+		while(_amount < newTotal)
 		{
 			float delta = Time.deltaTime * growRate;
-			other._amount += delta;
-			_amount -= delta;
+			_amount += delta;
+			other._amount -= delta;
+
+			_splashTimer += Time.deltaTime;
+			if(_splashTimer >= _splashFrequency)
+			{
+				_maggotSplatter.Play();
+				_splashTimer -= _splashFrequency;
+			}
 			yield return null;
 		}
-		other._merging = false;
-		Destroy(gameObject);
-		enabled = false;
+		_merging = false;
+		other.enabled = false;
+		Destroy(other);
 	}
 
 	void HandleSpriteRotation()

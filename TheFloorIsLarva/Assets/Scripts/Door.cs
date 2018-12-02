@@ -4,7 +4,7 @@ using UnityEngine;
 
 public class Door : MonoBehaviour
 {
-	public Activator _activator;
+	public Activator[] _activators;
 	bool _open = false;
 	bool _openLastFrame;
 
@@ -13,10 +13,13 @@ public class Door : MonoBehaviour
 
 	void Update ()
 	{
-		if (!_activator)
+		if (_activators.Length <= 0)
 			return;
 
-		_open = _activator.On;
+		_open = true;
+		foreach (var a in _activators)
+			if (!a.On)
+				_open = false;
 
 		if(_open && !_openLastFrame) // Open
 		{

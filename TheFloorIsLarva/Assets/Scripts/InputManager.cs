@@ -23,13 +23,9 @@ public class InputManager : MonoBehaviour
 	public Image _cursor;
 	public Sprite[] _cursorStates;
 
-	void Start()
-	{
-		Cursor.visible = false;
-	}
-
 	void Update ()
 	{
+		Cursor.visible = false;
 		HandleMaggotChunks();
 		HandleCursor();
 	}
