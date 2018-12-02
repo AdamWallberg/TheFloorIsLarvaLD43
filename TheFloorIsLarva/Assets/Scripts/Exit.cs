@@ -1,6 +1,7 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.SceneManagement;
 using UnityEngine.UI;
 
 public class Exit : MonoBehaviour
@@ -15,6 +16,10 @@ public class Exit : MonoBehaviour
 		if(_nextRoom)
 		{
 			StartCoroutine(Transition(collision.transform));
+		}
+		else
+		{
+			SceneManager.LoadScene("Win");
 		}
 	}
 
